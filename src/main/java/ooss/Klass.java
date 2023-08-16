@@ -7,6 +7,7 @@ public class Klass {
     private final int number;
     private Student leader;
     private Teacher teacher;
+    private Student student;
 
     public Klass(int number) {
         this.number = number;
@@ -30,7 +31,7 @@ public class Klass {
     public void assignLeader(Student student) {
         if (this.equals(student.getKlass())) {
             this.leader = student;
-            displayTeacherKnowsLeader();
+            if (this.teacher != null || this.student != null) displayPersonKnowsLeader();
         } else System.out.println("It is not one of us.");
     }
 
@@ -38,16 +39,36 @@ public class Klass {
         return leader.equals(student);
     }
 
+    public void attach(Student student) {
+        this.student = student;
+    }
+
     public void attach(Teacher teacher) {
         this.teacher = teacher;
     }
 
-    private void displayTeacherKnowsLeader() {
-        String teacherName = teacher.getName();
-        String classNumbers = teacher.getKlasses().stream()
-                .map(klass -> String.valueOf(klass.hashCode()))
-                .collect(Collectors.joining(", "));
+    private String getName() {
+        return this.student != null ? this.student.getName() : this.teacher.getName();
+    }
+
+    private String getOccupation() {
+        return this.student != null ? this.student.getOccupation() : this.teacher.getOccupation();
+    }
+
+    private String getKlassNumbers(String occupation) {
+        return "student".equals(occupation) ?
+                String.valueOf(student.getKlass().hashCode()) :
+                teacher.getKlasses().stream()
+                        .map(klass -> String.valueOf(klass.hashCode()))
+                        .collect(Collectors.joining(", "));
+    }
+
+    private void displayPersonKnowsLeader() {
+        String name = getName();
+        String occupation = getOccupation();
         String klassLeader = this.leader.getName();
-        System.out.printf("I am %s, teacher of Class %s. I know %s become Leader.%n", teacherName, classNumbers, klassLeader);
+        String messageFormat = "I am %s, %s of Class %s. I know %s become Leader.";
+
+        System.out.printf(messageFormat, name, occupation, getKlassNumbers(occupation), klassLeader);
     }
 }
