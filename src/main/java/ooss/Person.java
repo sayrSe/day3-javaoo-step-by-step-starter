@@ -1,7 +1,6 @@
 package ooss;
 
 public class Person {
-
     private final int id;
     private final String name;
     private final int age;
@@ -14,5 +13,20 @@ public class Person {
 
     public String introduce() {
         return String.format("My name is %s. I am %d years old.", name, age);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        return id == person.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
     }
 }
