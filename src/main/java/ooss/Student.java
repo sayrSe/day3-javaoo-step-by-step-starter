@@ -9,6 +9,14 @@ public class Student extends Person {
         super.setOccupation("student");
     }
 
+    public String introduce() {
+        StringBuilder introduction = new StringBuilder();
+        introduction.append(super.introduce());
+        if (klass != null) introduction.append(String.format(" I am in class %s.", klass.getKlassNumber()));
+
+        return introduction.toString();
+    }
+
     public void join(Klass klass) {
         this.klass = klass;
     }
