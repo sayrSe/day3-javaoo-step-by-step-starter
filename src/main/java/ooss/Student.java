@@ -16,7 +16,7 @@ public class Student extends Person {
     public String introduce() {
         StringBuilder introduction = new StringBuilder();
         introduction.append(super.introduce());
-        if (klass != null) introduction.append(String.format(" I am in class %s.", klass.getKlassNumber()));
+        if (klass != null) introduction.append(String.format(" I am in class %s.", klass.hashCode()));
 
         return introduction.toString();
     }

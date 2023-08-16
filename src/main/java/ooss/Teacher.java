@@ -19,7 +19,7 @@ public class Teacher extends Person {
         if (!klasses.isEmpty()) {
             introduction.append(" I teach Class ")
                     .append(klasses.stream()
-                            .map(klass -> String.valueOf(klass.getKlassNumber()))
+                            .map(klass -> String.valueOf(klass.hashCode()))
                             .collect(Collectors.joining(", "))).append(".");
         }
 
@@ -35,6 +35,7 @@ public class Teacher extends Person {
     }
 
     public boolean isTeaching(Student student) {
-        return klasses.contains(student.getKlass());
+        return klasses.stream().map(Klass::hashCode).collect(Collectors.toList())
+                .contains(student.getKlass().hashCode());
     }
 }
