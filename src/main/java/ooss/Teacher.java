@@ -1,8 +1,11 @@
 package ooss;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Teacher extends Person {
 
-    private Klass klass;
+    private final List<Klass> klasses = new ArrayList<>();
 
     public Teacher(int id, String name, int age) {
         super(id, name, age);
@@ -10,10 +13,10 @@ public class Teacher extends Person {
     }
 
     public void assignTo(Klass klass) {
-        this.klass = klass;
+        klasses.add(klass);
     }
 
     public boolean belongsTo(Klass klass) {
-        return klass.equals(this.klass);
+        return klasses.stream().anyMatch(klass::equals);
     }
 }
