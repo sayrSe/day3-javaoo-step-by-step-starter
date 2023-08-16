@@ -17,6 +17,7 @@ public class Person {
         StringBuilder introduction = new StringBuilder();
         introduction.append(String.format("My name is %s. I am %d years old.", name, age));
         if (occupation != null) introduction.append(String.format(" I am a %s.", occupation));
+
         return introduction.toString();
     }
 
