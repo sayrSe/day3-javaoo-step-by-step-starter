@@ -2,11 +2,11 @@ package ooss;
 
 public class Klass {
 
-    private final int id;
+    private final int number;
     private Student leader;
 
-    public Klass(int id) {
-        this.id = id;
+    public Klass(int number) {
+        this.number = number;
     }
 
     @Override
@@ -16,12 +16,12 @@ public class Klass {
 
         Klass klass = (Klass) o;
 
-        return id == klass.id;
+        return number == klass.number;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return number;
     }
 
     public void assignLeader(Student student) {
