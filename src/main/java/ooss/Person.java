@@ -14,7 +14,10 @@ public class Person {
     }
 
     public String introduce() {
-        return String.format("My name is %s. I am %d years old. I am a %s.", name, age, this.occupation);
+        StringBuilder introduction = new StringBuilder();
+        introduction.append(String.format("My name is %s. I am %d years old.", name, age));
+        if (occupation != null) introduction.append(String.format(" I am a %s.", occupation));
+        return introduction.toString();
     }
 
     public void setOccupation(String occupation) {
