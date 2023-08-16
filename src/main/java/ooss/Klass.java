@@ -3,6 +3,7 @@ package ooss;
 public class Klass {
 
     private final int id;
+    private Student leader;
 
     public Klass(int id) {
         this.id = id;
@@ -21,5 +22,13 @@ public class Klass {
     @Override
     public int hashCode() {
         return id;
+    }
+
+    public void assignLeader(Student student) {
+        this.leader = student;
+    }
+
+    public boolean isLeader(Student student) {
+        return leader.equals(student);
     }
 }
