@@ -36,7 +36,7 @@ public class Klass {
     }
 
     public boolean isLeader(Student student) {
-        return leader.equals(student);
+        return student.equals(leader);
     }
 
     public void attach(Student student) {
