@@ -9,6 +9,10 @@ public class Student extends Person {
         super.setOccupation("student");
     }
 
+    public Klass getKlass() {
+        return klass;
+    }
+
     public String introduce() {
         StringBuilder introduction = new StringBuilder();
         introduction.append(super.introduce());

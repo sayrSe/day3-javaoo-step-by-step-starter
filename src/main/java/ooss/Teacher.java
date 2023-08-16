@@ -33,4 +33,8 @@ public class Teacher extends Person {
     public boolean belongsTo(Klass klass) {
         return klasses.stream().anyMatch(klass::equals);
     }
+
+    public boolean isTeaching(Student student) {
+        return klasses.contains(student.getKlass());
+    }
 }
