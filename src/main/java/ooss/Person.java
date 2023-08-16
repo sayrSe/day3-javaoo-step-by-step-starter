@@ -25,6 +25,10 @@ public class Person {
         return introduction.toString();
     }
 
+    public String getOccupation() {
+        return occupation;
+    }
+
     public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
