@@ -13,6 +13,10 @@ public class Teacher extends Person {
         super.setOccupation("teacher");
     }
 
+    public List<Klass> getKlasses() {
+        return klasses;
+    }
+
     public String introduce() {
         StringBuilder introduction = new StringBuilder();
         introduction.append(super.introduce());
